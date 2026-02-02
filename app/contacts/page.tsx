@@ -1,3 +1,14 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Контакты',
+  description: 'Свяжитесь с CarSave. Телефон: +7 (800) 505 34 32. Telegram поддержка. Офисы в Москве. Оставьте заявку онлайн.',
+  openGraph: {
+    title: 'Контакты CarSave',
+    description: 'Свяжитесь с CarSave. Телефон, Telegram, офисы.',
+  },
+}
+
 export default function ContactsPage() {
   return (
     <div className="pt-32 pb-20 bg-gray-50 min-h-screen">

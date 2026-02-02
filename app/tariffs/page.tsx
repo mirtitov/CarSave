@@ -1,4 +1,14 @@
 import Calculator from '@/components/Calculator'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Тарифы',
+  description: 'Выберите подходящий тариф защиты автомобиля. Старт, Стандарт или Премиум - рассчитайте стоимость онлайн. Гарантия на двигатель, АКПП, электрооборудование.',
+  openGraph: {
+    title: 'Тарифы CarSave - Выберите защиту для вашего автомобиля',
+    description: 'Выберите подходящий тариф защиты автомобиля. Рассчитайте стоимость онлайн.',
+  },
+}
 
 export default function TariffsPage() {
   return (

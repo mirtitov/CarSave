@@ -1,3 +1,14 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'О компании CarSave',
+  description: 'CarSave - российская компания по защите автомобилей. Гарантия на ремонт двигателя, АКПП, электрооборудования. Сеть аккредитованных СТО по всей стране.',
+  openGraph: {
+    title: 'О компании CarSave',
+    description: 'CarSave - российская компания по защите автомобилей',
+  },
+}
+
 export default function AboutPage() {
   return (
     <div className="pt-32 pb-20 bg-gray-50 min-h-screen">
