@@ -76,9 +76,7 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${inter.variable} font-sans`}>
         <Providers>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          {children}
         </Providers>
       </body>
     </html>
