@@ -12,31 +12,46 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        try {
+          if (!credentials?.email || !credentials?.password) {
+            console.log('❌ Missing credentials')
+            return null
+          }
+
+          console.log('🔍 Looking for admin:', credentials.email)
+
+          const admin = await prisma.admin.findUnique({
+            where: { email: credentials.email },
+          })
+
+          if (!admin) {
+            console.log('❌ Admin not found:', credentials.email)
+            return null
+          }
+
+          console.log('✅ Admin found:', admin.email, 'ID:', admin.id)
+          console.log('🔐 Checking password...')
+
+          const isPasswordValid = await bcrypt.compare(
+            credentials.password,
+            admin.password
+          )
+
+          if (!isPasswordValid) {
+            console.log('❌ Invalid password')
+            console.log('Password hash in DB:', admin.password.substring(0, 20) + '...')
+            return null
+          }
+
+          console.log('✅ Password valid!')
+          return {
+            id: admin.id,
+            email: admin.email,
+            name: admin.name,
+          }
+        } catch (error) {
+          console.error('❌ Auth error:', error)
           return null
-        }
-
-        const admin = await prisma.admin.findUnique({
-          where: { email: credentials.email },
-        })
-
-        if (!admin) {
-          return null
-        }
-
-        const isPasswordValid = await bcrypt.compare(
-          credentials.password,
-          admin.password
-        )
-
-        if (!isPasswordValid) {
-          return null
-        }
-
-        return {
-          id: admin.id,
-          email: admin.email,
-          name: admin.name,
         }
       },
     }),
