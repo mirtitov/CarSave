@@ -44,6 +44,7 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "init-admin": "tsx scripts/init-admin.ts",
+    "check-admin": "tsx scripts/check-admin.ts",
     "setup-production": "tsx scripts/setup-production-db.ts"
   }
 }
