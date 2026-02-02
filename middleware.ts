@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   // Разрешаем доступ к странице логина без проверки
-  if (request.nextUrl.pathname === '/admin/login') {
+  if (request.nextUrl.pathname === '/login') {
     return NextResponse.next()
   }
 

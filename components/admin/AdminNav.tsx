@@ -47,7 +47,7 @@ export default function AdminNav() {
               Сайт
             </Link>
             <button
-              onClick={() => signOut({ callbackUrl: '/admin/login' })}
+              onClick={() => signOut({ callbackUrl: '/login' })}
               className="btn-secondary text-sm py-2 px-4"
             >
               Выйти
